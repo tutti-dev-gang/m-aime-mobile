@@ -1,19 +1,20 @@
 import { React, useState } from "react";
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
+import BackgroundWave from "../components/BackgroundWave";
 
 export default function EventsPage() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" hidden={false} />
-    </View>
+    <BackgroundWave>
+      <View style={styles.container}></View>
+    </BackgroundWave>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    height: "100%",
+    position: "relative",
+    zIndex: 100,
+    justifyContent: "flex-end",
   },
 });

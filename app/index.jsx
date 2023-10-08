@@ -1,50 +1,57 @@
 import { React, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, ImageBackground } from "react-native";
+
 import SquareButton from "../components/SquareButton";
+import BackgroundWave from "../components/BackgroundWave";
 
 export default function HomePage() {
+
   const [count, setCount] = useState(0);
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" hidden={false} />
-      <Text>Count: {count}</Text>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-          width: "100%",
-        }}
-      > 
-        <SquareButton
-          icon="heart"
-          color={"#AFE9AA"}
-          border={true}
-          size={32}
-          onPress={() => {
-            setCount(count + 1);
-          }}
-        />
-        <SquareButton
-          icon="close"
-          color={"#FCAEAC"}
-          border={false}
-          size={32}
-          onPress={() => {
-            setCount(count - 1);
-          }}
-        />
+    <BackgroundWave>
+      <View style={styles.container}>
+        <Text style={styles.text}>{count}</Text>
+        <View style={styles.btns_container}>
+          <SquareButton
+            icon="heart"
+            color={"#AFE9AA"}
+            border={true}
+            size={32}
+            onPress={() => {
+              setCount(count + 1);
+            }}
+          />
+          <SquareButton
+            icon="close"
+            color={"#FCAEAC"}
+            border={false}
+            size={32}
+            onPress={() => {
+              setCount(count - 1);
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </BackgroundWave>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#E5E5E5",
-    alignItems: "center",
+    height: "100%",
+    position: "relative",
+    zIndex: 100,
+    justifyContent: "flex-end",
+  },
+  btns_container: {
+    height: 100,
+    width: "100%",
+    zIndex: 1000,
+    flexDirection: "row",
     justifyContent: "center",
-
+    columnGap: 120,
+    bottom: -70,
+    alignItems: "center",
+    position: "absolute",
   },
 });
