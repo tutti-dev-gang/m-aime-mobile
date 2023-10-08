@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
 import SquareButton from "../components/SquareButton";
 
-export default function Home() {
+export default function HomePage() {
   const [count, setCount] = useState(0);
   return (
     <View style={styles.container}>
@@ -15,7 +15,7 @@ export default function Home() {
           justifyContent: "space-evenly",
           width: "100%",
         }}
-      >
+      > 
         <SquareButton
           icon="heart"
           color={"#AFE9AA"}
@@ -42,8 +42,9 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#E5E5E5",
     alignItems: "center",
     justifyContent: "center",
+
   },
 });

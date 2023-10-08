@@ -1,11 +1,11 @@
 import { React, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function SquareButton({ icon, onPress, color, size, border, ...props}) {
   return (
-    <TouchableOpacity
+    <Pressable
       style={[styles.button, styles.shadowProp, styles.elevation]}
       onPress={onPress}
       {...props}
@@ -21,7 +21,7 @@ export default function SquareButton({ icon, onPress, color, size, border, ...pr
       ) : (
         <FontAwesome style={{ color: color, fontSize: size }} name={icon} />
       )}
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
