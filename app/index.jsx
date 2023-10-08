@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, ImageBackground } from "react-native";
 
 import SquareButton from "../components/SquareButton";
 import BackgroundWave from "../components/BackgroundWave";
+import ProfileCard from "../components/ProfileCard";
 
 export default function HomePage() {
 
@@ -10,12 +11,16 @@ export default function HomePage() {
   return (
     <BackgroundWave>
       <View style={styles.container}>
-        <Text style={styles.text}>{count}</Text>
+        <ProfileCard  
+          count={count}
+          name="Jane Doe"
+          description="Donec non augue id elit tincidunt aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit."        
+        />
         <View style={styles.btns_container}>
           <SquareButton
             icon="heart"
             color={"#AFE9AA"}
-            border={true}
+            border={false}
             size={32}
             onPress={() => {
               setCount(count + 1);
