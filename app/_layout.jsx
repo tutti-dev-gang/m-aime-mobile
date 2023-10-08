@@ -1,7 +1,8 @@
 import { Tabs, useRouter } from "expo-router";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { Ionicons } from "@expo/vector-icons";
-import { View, Text } from "react-native";
+import { Entypo } from "@expo/vector-icons"; 
+import { View, Text, StyleSheet } from "react-native";
 
 export default () => {
   const router = useRouter();
@@ -20,19 +21,19 @@ export default () => {
           alignItems: "center",
         },
         title: "",
-          headerStyle: {
-              backgroundColor: "#fff",
-              borderBottomWidth: 1,
-              borderBottomColor: "#D9D9D9",
-              shadowColor: "#000",
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              shadowOpacity: 0.22,
-              shadowRadius: 2.22,
-              elevation: 3,
+        headerStyle: {
+          backgroundColor: "#fff",
+          borderBottomWidth: 1,
+          borderBottomColor: "#D9D9D9",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 1,
           },
+          shadowOpacity: 0.22,
+          shadowRadius: 2.22,
+          elevation: 3,
+        },
         headerRight: () => (
           <View
             style={{
@@ -77,37 +78,57 @@ export default () => {
                 fontWeight: "bold",
                 color: "#000",
               }}
-            >M'aime</Text>
+            >
+              M'aime
+            </Text>
           </View>
         ),
       }}
     >
       <Tabs.Screen
-          name="index"
-          options={{
-            tabBarIcon: ({ color }) => (
+        name="index"
+        options={{
+          tabBarIcon: ({ color, tabBarActive }) => (
+            <View style={styles.btn_container}>
               <FontAwesome5 name="heart" size={24} color={color} />
-            ),
-          }}
-        />
+              {color == "#FF8484" && <Entypo name="minus" size={24} color={color} />}
+            </View>
+          ),
+        }}
+      />
 
       <Tabs.Screen
-          name="EventsPage"
-          options={{
-            tabBarIcon: ({ color }) => (
+        name="EventsPage"
+        options={{
+          tabBarIcon: ({ color }) => (
+            <View style={styles.btn_container}>
               <FontAwesome5 name="bell" size={24} color={color} />
-            ),
-          }}
-        />
+              {color == "#FF8484" && <Entypo name="minus" size={24} color={color} />}
+            </View>
+          ),
+        }}
+      />
 
       <Tabs.Screen
-          name="ProfilePage"
-          options={{
-            tabBarIcon: ({ color }) => (
+        name="ProfilePage"
+        options={{
+          tabBarIcon: ({ color }) => (
+            <View style={styles.btn_container}>
               <FontAwesome5 name="user" size={24} color={color} />
-            ),
-          }}
-        />
+              {color == "#FF8484" && <Entypo name="minus" size={24} color={color} />}
+            </View>
+          ),
+        }}
+      />
     </Tabs>
   );
 };
+
+const styles = StyleSheet.create({
+  btn_container: {
+    flexDirection: "column",
+    alignItems: "center",
+    columnGap: 10,
+    height: 50,
+  },
+});
