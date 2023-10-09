@@ -1,6 +1,5 @@
-import { React, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { React } from "react";
+import { StyleSheet, Pressable } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function SquareButton({ icon, onPress, color, size, border, ...props}) {

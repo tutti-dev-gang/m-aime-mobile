@@ -6,7 +6,9 @@ export default function ProfilePage() {
   return (
     <BackgroundWave>
       <View style={styles.container}>
-
+        <Text>
+          Profile Page
+        </Text>
       </View>
     </BackgroundWave>
   );
