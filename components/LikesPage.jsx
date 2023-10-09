@@ -3,9 +3,6 @@ import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 import SmallCard from "./SmallCard";
 
 export default function LikePage({users}) {
-  
-  
-  
   return (
     <ScrollView style={styles.scroll_container}>
       <View style={styles.container}>
@@ -14,8 +11,8 @@ export default function LikePage({users}) {
             <SmallCard
               key={user.id}
               name={user.name}
-              photo={user.photo}
-              blurIsActive={true}
+              photo={user.photos[0]?.photo_url}
+              blurIsActive={false}
               showName={true}
             />
           ))

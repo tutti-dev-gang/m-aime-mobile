@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     height: 220,
     borderRadius: 16,
     overflow: "hidden",
+    backgroundColor: "#ccc",
   },
   image: {
     flex: 1,
