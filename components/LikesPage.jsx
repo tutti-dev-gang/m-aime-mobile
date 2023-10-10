@@ -12,7 +12,7 @@ export default function LikePage({users}) {
               key={user.id}
               name={user.name}
               photo={user.photos[0]?.photo_url}
-              blurIsActive={false}
+              blurIsActive={true}
               showName={true}
             />
           ))
@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         flexDirection: "row",
         rowGap: 20,
-        columnGap: 20,
-        justifyContent: "center",
+        justifyContent: "space-between",
         paddingVertical: 20,
+        paddingHorizontal: 10,
     },
     
 });
