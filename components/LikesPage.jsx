@@ -1,5 +1,5 @@
-import { React, useState } from "react";
-import { StyleSheet, Text, View, Button, ScrollView, Dimensions } from "react-native";
+import { React } from "react";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import SmallCard from "./SmallCard";
 
 export default function LikePage({users}) {

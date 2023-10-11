@@ -1,4 +1,4 @@
-import { Tabs, useRouter } from "expo-router";
+import { Tabs, useRouter, usePathname } from "expo-router";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons"; 
@@ -8,6 +8,7 @@ import store from "../redux/store";
 
 export default () => {
   const router = useRouter();
+  const pathname = usePathname();
   return (
     <Provider store={store}>
       <Tabs
@@ -40,21 +41,22 @@ export default () => {
           headerRight: () => (
             <View
               style={{
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                alignItems: "center",
-                columnGap: 10,
+                flexDirection: "column",
                 paddingRight: 20,
+                alignItems: "center",
               }}
             >
               <Ionicons
                 name="ios-chatbox-ellipses-outline"
                 size={24}
-                color="#D9D9D9"
+                color={pathname == "/MessagesPage" ? "#FF8484" : "#D9D9D9"}
                 onPress={() => {
-                  router.push("/");
+                  router.push("/MessagesPage");
                 }}
               />
+              {pathname == "/MessagesPage" && (
+                <Entypo name="minus" size={24} color={"#FF8484"} />
+              )}
             </View>
           ),
           headerLeft: () => (
@@ -62,28 +64,33 @@ export default () => {
               style={{
                 flexDirection: "row",
                 justifyContent: "space-evenly",
-                alignItems: "center",
                 columnGap: 10,
                 paddingLeft: 20,
               }}
             >
-              <FontAwesome5
-                name="heart"
-                size={32}
-                color="#FF8484"
-                onPress={() => {
-                  router.push("/");
-                }}
-              />
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontWeight: "bold",
-                  color: "#000",
-                }}
+              <View 
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                columnGap: 10,
+              }}
               >
-                M'aime
-              </Text>
+                <FontAwesome5 name="heart" size={32}
+                color="#FF8484" onPress=
+                {() => {
+                  router.push("/");
+                }} 
+                />
+                <Text
+                  style={{
+                    fontSize: 20,
+                    fontWeight: "bold",
+                    color: "#000",
+                  }}
+                >
+                  M'aime
+                </Text>
+              </View>
             </View>
           ),
         }}
@@ -94,7 +101,9 @@ export default () => {
             tabBarIcon: ({ color, tabBarActive }) => (
               <View style={styles.btn_container}>
                 <FontAwesome5 name="heart" size={24} color={color} />
-                {color == "#FF8484" && <Entypo name="minus" size={24} color={color} />}
+                {color == "#FF8484" && (
+                  <Entypo name="minus" size={24} color={color} />
+                )}
               </View>
             ),
           }}
@@ -106,7 +115,9 @@ export default () => {
             tabBarIcon: ({ color }) => (
               <View style={styles.btn_container}>
                 <FontAwesome5 name="bell" size={24} color={color} />
-                {color == "#FF8484" && <Entypo name="minus" size={24} color={color} />}
+                {color == "#FF8484" && (
+                  <Entypo name="minus" size={24} color={color} />
+                )}
               </View>
             ),
           }}
@@ -118,9 +129,18 @@ export default () => {
             tabBarIcon: ({ color }) => (
               <View style={styles.btn_container}>
                 <FontAwesome5 name="user" size={24} color={color} />
-                {color == "#FF8484" && <Entypo name="minus" size={24} color={color} />}
+                {color == "#FF8484" && (
+                  <Entypo name="minus" size={24} color={color} />
+                )}
               </View>
             ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="MessagesPage"
+          options={{
+            href: null,
           }}
         />
       </Tabs>
@@ -135,4 +155,5 @@ const styles = StyleSheet.create({
     columnGap: 10,
     height: 50,
   },
+  
 });

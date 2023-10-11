@@ -2,7 +2,8 @@ import defaultAxios from "axios";
 
 
 const axios = defaultAxios.create({
-  baseURL: "http://192.168.113.6:8000/api/v1/",
+  // baseURL: "http://192.168.113.6:8000/api/v1/",
+  baseURL: "http://172.20.40.31:8000/api/v1/",
   headers: { "Content-Type": "application/json" },
 });
 
@@ -18,7 +19,6 @@ export const getAllUsers = async () => {
 
 export const getUserById = async (id) => {
   try {
-    console.log('id ' + id);
     const user = await axios.get(`users/${id}`);
 
     return user.data;
