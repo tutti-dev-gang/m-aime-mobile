@@ -15,6 +15,8 @@ export default function LikePage({users}) {
                 photo={user.photos[0]?.photo_url}
                 blurIsActive={true}
                 showName={true}
+                height={220}
+                width={160}
               />
             ))
           ) : (

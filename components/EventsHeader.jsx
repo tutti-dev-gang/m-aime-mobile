@@ -1,7 +1,7 @@
 import React from "react";
 import {Pressable, StyleSheet, Text, View } from "react-native";
 
-export default ProfileCard = ({ usersCount, pageActive, handleClick }) => {
+export default EventsHeader = ({ usersCount, pageActive, handleClick }) => {
   const likePageIsActive = pageActive === "like";
   const favoritePageIsActive = pageActive === "favorite";
 

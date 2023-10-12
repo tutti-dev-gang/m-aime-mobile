@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, Button, ScrollView, ImageBackground } from "rea
 
 export default function SmallCard({ name, photo, blurIsActive, showName, ...props }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {
+      height: props.height,
+      width: props.width,
+    }]}>
       <ImageBackground
         source={{ uri: photo }}
         resizeMode="cover"
@@ -24,8 +27,6 @@ export default function SmallCard({ name, photo, blurIsActive, showName, ...prop
 
 const styles = StyleSheet.create({
   container: {
-    width: 160,
-    height: 220,
     borderRadius: 16,
     overflow: "hidden",
     backgroundColor: "#ccc",

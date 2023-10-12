@@ -1,4 +1,4 @@
-import { Tabs, useRouter, usePathname } from "expo-router";
+import { Tabs, useRouter, usePathname, useSegments } from "expo-router";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons"; 
@@ -9,6 +9,9 @@ import store from "../redux/store";
 export default () => {
   const router = useRouter();
   const pathname = usePathname();
+  const segments = useSegments();
+  const hideTabBar = segments.includes("ConversationPage") || segments.includes("LoginPage");
+  const hideHeader = segments.includes("LoginPage");
   return (
     <Provider store={store}>
       <Tabs
@@ -16,6 +19,7 @@ export default () => {
           tabBarShowLabel: false,
           tabBarActiveTintColor: "#FF8484",
           tabBarInactiveTintColor: "#D9D9D9",
+          headerShown: hideHeader ? false : true,
           tabBarStyle: {
             backgroundColor: "#fff",
             borderTopWidth: 0,
@@ -23,6 +27,7 @@ export default () => {
             elevation: 0,
             justifyContent: "center",
             alignItems: "center",
+            display: hideTabBar ? "none" : "flex",
           },
           title: "",
           headerStyle: {
@@ -68,18 +73,23 @@ export default () => {
                 paddingLeft: 20,
               }}
             >
-              <View 
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                columnGap: 10,
-              }}
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  columnGap: 10,
+                }}
               >
-                <FontAwesome5 name="heart" size={32}
-                color="#FF8484" onPress=
-                {() => {
-                  router.push("/");
-                }} 
+                <FontAwesome5
+                  name="heart"
+                  size={32}
+                  color="#FF8484"
+                  onPress={() => {
+                    router.push({
+                        pathname: "/",
+                        params: { isAuth: true },
+                      });
+                  }}
                 />
                 <Text
                   style={{
@@ -139,6 +149,18 @@ export default () => {
 
         <Tabs.Screen
           name="MessagesPage"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="ConversationPage"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="LoginPage"
           options={{
             href: null,
           }}

@@ -1,25 +1,37 @@
 import { React } from "react";
-import { StyleSheet, Text, View, ScrollView, Pressable } from "react-native";
-// import SmallCard from "./SmallCard";
+import { StyleSheet, Text, View, ScrollView, Pressable, Image } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 export default LikePage = ({ user }) => {
     const router = useRouter()
     return (
-        <Pressable style={styles.container} onPress={() => router.push("/")}>
+      <Pressable
+        style={styles.container}
+        onPress={() =>
+          router.push({
+            pathname: "/ConversationPage",
+            params: user,
+          })
+        }
+      >
         <View style={styles.imageContainer}>
-            {!user && <FontAwesome5 name="heart" size={32} color="#FF8484" />}
+          {!user && <FontAwesome5 name="heart" size={32} color="#FF8484" />}
+          {user && (
+            <Image
+              source={{ uri: user.photos[0]?.photo_url }}
+              style={styles.image}
+            />
+          )}
         </View>
         <View style={styles.card_info}>
-            <Text style={styles.profile_name}>
-                {user ? user.name : "John Doe"}
-            </Text>
-            <Text style={styles.message} numberOfLines={1}>
-                {user ? user.message : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-            </Text>
+          <Text style={styles.profile_name}>{user ? user.name : "M'aime"}</Text>
+          <Text style={styles.message} numberOfLines={1}>
+            {!user && "Profite de toutes les fonctionnalités de M'aime"}
+            {user && "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+          </Text>
         </View>
-        </Pressable>
+      </Pressable>
     );
 }
 

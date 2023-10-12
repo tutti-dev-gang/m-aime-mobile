@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   bottom: {
     width: "100%",
-    height: 100,
+    height: 80,
     backgroundColor: "transparent",
     zIndex: -1,
     }
