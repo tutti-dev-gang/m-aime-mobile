@@ -1,9 +1,10 @@
 import defaultAxios from "axios";
+import { API_BASE_URL } from "@env";
+
 
 
 const axios = defaultAxios.create({
-  baseURL: "http://192.168.113.6:8000/api/v1/",
-  // baseURL: "http://172.20.40.31:8000/api/v1/",
+  baseURL: `${API_BASE_URL}/api/v1/`,
   headers: { "Content-Type": "application/json" },
 });
 

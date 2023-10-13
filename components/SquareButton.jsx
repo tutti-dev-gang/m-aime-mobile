@@ -1,29 +1,41 @@
 import { React } from "react";
 import { StyleSheet, Pressable } from "react-native";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import {
+  Octicons,
+  EvilIcons,
+  FontAwesome5,
+  FontAwesome,
+} from "@expo/vector-icons"; 
 
-export default function SquareButton({ icon, onPress, color, size, border, ...props}) {
+export default function SquareButton({
+  icon,
+  onPress,
+  color,
+  size,
+  source = "FontAwesome",
+  ...props
+}) {
   return (
     <Pressable
       style={[styles.button, styles.shadowProp, styles.elevation]}
       onPress={onPress}
       {...props}
     >
-      {border ? (
-        <>
-          <FontAwesome style={{ color: "#FFF", fontSize: size }} name={icon} />
-          <FontAwesome
-            style={[styles.iconChild, { color: color }]}
-            name={icon}
-          />
-        </>
-      ) : (
+      {source == "FontAwesome" && (
         <FontAwesome style={{ color: color, fontSize: size }} name={icon} />
+      )}
+      {source == "EvilIcons" && (
+        <EvilIcons style={{ color: color, fontSize: size }} name={icon} />
+      )}
+      {source == "FontAwesome5" && (
+        <FontAwesome5 style={{ color: color, fontSize: size }} name={icon} />
+      )}
+      {source == "Octicons" && (
+        <Octicons style={{ color: color, fontSize: size }} name={icon} />
       )}
     </Pressable>
   );
 }
-
 
 const styles = StyleSheet.create({
   button: {
@@ -49,10 +61,4 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     elevation: 4,
   },
-  iconChild: {
-    position: "absolute",
-    fontSize: 28,
-    alignItems: "center",
-    justifyContent: "center",
-},
 });
